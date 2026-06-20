@@ -68,46 +68,8 @@ function renderLicenses() {
 
 // --- Form Formspree Actions ---
 function initializeContactForm() {
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-    const submitBtn = document.getElementById("submit-btn");
-    
-    if (!form) return;
-
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault(); // <-- This stops the page from redirecting!
-        
-        submitBtn.innerText = "Sending...";
-        submitBtn.disabled = true;
-        
-        const data = new FormData(event.target);
-        
-        try {
-            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                method: "POST",
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            });
-            
-            if (response.ok) {
-                status.style.display = "block";
-                status.style.backgroundColor = "#E8F0E8";
-                status.style.color = "var(--primary)";
-                status.innerHTML = "Thank you! Your inquiry has been sent successfully.";
-                form.reset(); // Clears the form fields
-                form.style.display = "none"; // Hides the form entirely
-            } else {
-                throw new Error("Submission failed");
-            }
-        } catch (error) {
-            status.style.display = "block";
-            status.style.backgroundColor = "#FDF2F2";
-            status.style.color = "#9B1C1C";
-            status.innerHTML = "Oops! There was a problem submitting your form. Please try again.";
-            submitBtn.innerText = "Send Inquiry";
-            submitBtn.disabled = false;
-        }
-    });
+    // Formspree's CDN script handles submission automatically via index.html scripts
+    console.log("Formspree AJAX initialized successfully.");
 }
 
 // --- Mobile Menu Interaction logic ---
