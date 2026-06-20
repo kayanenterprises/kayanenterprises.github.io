@@ -73,3 +73,21 @@ function initializeContactForm() {
 
     form.action = `https://formspree.io/f/${FORMSPREE_ID}`;
 }
+
+// --- Mobile Menu Interaction logic ---
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-list');
+
+if (menuToggle && navLinks) {
+    // Open/Close menu when burger icon is clicked
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu smoothly when any selection is tapped
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+}

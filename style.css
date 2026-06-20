@@ -332,25 +332,91 @@ footer p {
     opacity: 0.85;
 }
 
-/* --- Structural Responsiveness --- */
+/* --- Comprehensive Responsive Design & Mobile Fixes --- */
+
+/* For smaller laptops and tablets (992px and below) */
 @media (max-width: 992px) {
     .about-content {
         grid-template-columns: 1fr;
         gap: 40px;
+        text-align: center;
+    }
+    .stat-box {
+        border-left: none;
+        border-top: 4px solid var(--primary);
     }
 }
 
+/* For mobile devices (768px and below) */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.6rem;
+    section {
+        padding: 60px 15px; /* Thinner padding on mobile screens */
     }
-    .nav-links {
+
+    /* Typography scale adjustments */
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+    .hero p {
+        font-size: 1.05rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+
+    /* Convert grid systems into clean mobile stacks */
+    .product-grid {
+        grid-template-columns: 1fr; /* Strict single-column stack */
+        gap: 25px;
+    }
+    
+    .product-img-wrapper {
+        height: 220px; /* Adjusted height for vertical mobile frames */
+    }
+
+    .license-grid {
+        grid-template-columns: 1fr;
         gap: 15px;
     }
-    .nav-links a {
-        font-size: 0.9rem;
+
+    /* Mobile Navigation Drawer System */
+    .nav-links {
+        position: fixed;
+        top: 75px; /* Right underneath the header bar */
+        left: -100%; /* Hidden off-screen by default */
+        width: 100%;
+        height: calc(100vh - 75px);
+        background-color: var(--bg-light);
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        gap: 40px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     }
-    section {
-        padding: 70px 20px;
+
+    /* Active dynamic state for mobile menu toggle */
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* Create the responsive Hamburger Menu icon styling */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 5px;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary);
+        margin: 5px 0;
+        transition: var(--transition);
     }
 }
