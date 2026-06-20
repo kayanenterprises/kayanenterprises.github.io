@@ -3,22 +3,22 @@ const FORMSPREE_ID = "your_formspree_id"; // <-- Drop your unique Formspree Endp
 
 const CATALOG_DATA = [
     {
-        name: "Premium Green Banana Powder",
+        name: "Premium Raw Banana Powder",
         description: "Gluten-free, nutrient-rich, and perfect for functional food manufacturing, baking formulation, and premium wellness supplements.",
-        imagePath: "media/product-powder.jpg",
+        imagePath: "media/product-powder.png",
         altText: "High Grade Organic Green Banana Powder"
     },
     {
-        name: "Dehydrated Banana Slices",
+        name: "Dehydrated Banana Chips",
         description: "100% natural, crisp, low-moisture healthy ingredients optimized using advanced structural dehydration systems.",
-        imagePath: "media/product-slices.jpg",
+        imagePath: "media/product-chips.jpg",
         altText: "Crisp Organic Banana Chips and Dehydrated Slices"
     },
     {
-        name: "Organic Banana Puree",
-        description: "Aseptic, high-yield pureed fruits completely safe for global infant formula chains, premium beverages, and bakery fields.",
-        imagePath: "media/product-puree.jpg",
-        altText: "Pure Organic Sterile Banana Puree Packets"
+        name: "Premium Banana Biscuits",
+        description: "Crispy, naturally sweetened biscuits baked with organic banana flour. Packed with micro-nutrients and optimized for long shelf-life export markets.",
+        imagePath: "media/product-biscuits.jpg",
+        altText: "Premium Baked Organic Banana Biscuits Packaging"
     }
 ];
 
