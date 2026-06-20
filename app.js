@@ -69,21 +69,16 @@ function renderLicenses() {
 // --- Form Formspree Actions & Browser Caching ---
 function initializeContactForm() {
     const form = document.getElementById("contact-form");
-    const successMsg = document.getElementById("form-success-msg");
+    const cacheMsg = document.getElementById("form-cache-msg");
     const submitBtn = document.getElementById("submit-btn");
 
     if (!form) return;
 
     // 1. Check browser cache on page load to prevent resubmission
     if (localStorage.getItem("kayan_form_submitted") === "true") {
-        if (successMsg) {
-            successMsg.style.display = "block";
-            successMsg.innerHTML = "You have already submitted an inquiry. We are reviewing your details!";
-            successMsg.style.backgroundColor = "#FEF9E7"; // Warm cream accent color
-            successMsg.style.color = "#2C3E2B";
-            successMsg.style.borderColor = "#F4C430";
-        }
-        // Disable form inputs so they can't type or press enter again
+        if (cacheMsg) cacheMsg.style.display = "block";
+        
+        // Lock the inputs completely
         Array.from(form.elements).forEach(element => element.disabled = true);
         if (submitBtn) {
             submitBtn.innerText = "Inquiry Already Submitted";
@@ -93,31 +88,32 @@ function initializeContactForm() {
         return;
     }
 
-    // 2. Handle the live Formspree submission events
+    // 2. Track Formspree Status Changes Safely
     form.addEventListener("submit", () => {
-        // We use a small timeout to let Formspree complete the background AJAX call safely first
-        setTimeout(() => {
-            // Check if Formspree processed it successfully
-            const nativeSuccessEl = document.querySelector('[data-fs-success]');
+        // Repeatedly check if Formspree appended its native success flag
+        const checkSuccessInterval = setInterval(() => {
+            const successEl = document.querySelector('[data-fs-success]');
             
-            if (nativeSuccessEl && window.getComputedStyle(nativeSuccessEl).display !== 'none' || form.hasAttribute('data-fs-success')) {
-                // Display our custom green text message block
-                if (successMsg) successMsg.style.display = "block";
-                
-                // Save token to local storage cache to lock the browser permanently
+            // If Formspree turns the box visible, lock down local cache immediately
+            if (successEl && window.getComputedStyle(successEl).display !== 'none') {
                 localStorage.setItem("kayan_form_submitted", "true");
                 
-                // Disable button and form fields instantly
-                Array.from(form.elements).forEach(element => element.disabled = true);
+                // Keep the button static so they know it finished cleanly
                 if (submitBtn) {
                     submitBtn.innerText = "Inquiry Sent";
                     submitBtn.style.opacity = "0.6";
+                    submitBtn.disabled = true;
                 }
+                
+                clearInterval(checkSuccessInterval); // Kill the loop monitoring
             }
-        }, 800); // 800 milliseconds delay ensures AJAX roundtrip is finalized
+        }, 100);
+
+        // Safety timeout to kill the loop if something drops offline
+        setTimeout(() => clearInterval(checkSuccessInterval), 5000);
     });
 
-    console.log("Formspree AJAX & Submission Lock Engine initialized successfully.");
+    console.log("Formspree Production Monitoring Engine initialized successfully.");
 }
 
 // --- Mobile Menu Interaction logic ---

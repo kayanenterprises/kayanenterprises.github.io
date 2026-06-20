@@ -86,10 +86,6 @@
             <p class="section-subtitle">Interested in bulk orders, custom processing, or partnerships? Drop us a message.</p>
             
             <div class="contact-container">
-                <!-- Success & Error messages styled natively to match your design -->
-                <div data-fs-success style="display: none; margin-bottom: 20px; padding: 15px; background-color: #E8F0E8; color: var(--primary); border-radius: 8px; text-align: center; font-weight: 600;">
-                    Thank you! Your inquiry has been sent successfully.
-                </div>
                 <div data-fs-error style="display: none; margin-bottom: 20px; padding: 15px; background-color: #FDF2F2; color: #9B1C1C; border-radius: 8px; text-align: center; font-weight: 600;">
                     Oops! There was a problem submitting your form. Please try again.
                 </div>
@@ -107,10 +103,15 @@
                         <label for="message">Requirement Details</label>
                         <textarea id="message" name="message" rows="6" required placeholder="Describe your product specifications..." data-fs-field></textarea>
                     </div>
+                    
                     <button type="submit" id="submit-btn" data-fs-submit-btn class="btn" style="width: 100%;">Send Inquiry</button>
                     
-                    <div id="form-success-msg" style="display: none; margin-top: 20px; padding: 15px; background-color: #E8F0E8; color: #1E4620; border-radius: 8px; text-align: center; font-weight: 600; border: 1px solid #C3E6CB;">
+                    <div data-fs-success style="display: none; margin-top: 20px; padding: 15px; background-color: #E8F0E8; color: #1E4620; border-radius: 8px; text-align: center; font-weight: 600; border: 1px solid #C3E6CB;">
                         Thank you! Your inquiry has been sent successfully. Our team will contact you shortly.
+                    </div>
+    
+                    <div id="form-cache-msg" style="display: none; margin-top: 20px; padding: 15px; background-color: #FEF9E7; color: #2C3E2B; border-radius: 8px; text-align: center; font-weight: 600; border: 1px solid #F4C430;">
+                        You have already submitted an inquiry. We are reviewing your details!
                     </div>
                 </form>
             </div>
