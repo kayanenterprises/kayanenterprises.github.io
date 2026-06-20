@@ -69,16 +69,20 @@ function renderLicenses() {
 // --- Form Formspree Actions & Browser Caching ---
 function initializeContactForm() {
     const form = document.getElementById("contact-form");
-    const cacheMsg = document.getElementById("form-cache-msg");
+    const statusAlert = document.getElementById("form-status-alert");
     const submitBtn = document.getElementById("submit-btn");
 
-    if (!form) return;
+    if (!form || !statusAlert) return;
 
-    // 1. Check browser cache on page load to prevent resubmission
+    // 1. Check browser cache on page load to prevent duplicate entries
     if (localStorage.getItem("kayan_form_submitted") === "true") {
-        if (cacheMsg) cacheMsg.style.display = "block";
+        statusAlert.style.display = "block";
+        statusAlert.style.backgroundColor = "#FEF9E7"; // Warm cream
+        statusAlert.style.color = "#2C3E2B";
+        statusAlert.style.borderColor = "#F4C430";
+        statusAlert.innerHTML = "You have already submitted an inquiry. We are reviewing your details!";
         
-        // Lock the inputs completely
+        // Lock form inputs cleanly
         Array.from(form.elements).forEach(element => element.disabled = true);
         if (submitBtn) {
             submitBtn.innerText = "Inquiry Already Submitted";
@@ -88,32 +92,72 @@ function initializeContactForm() {
         return;
     }
 
-    // 2. Track Formspree Status Changes Safely
-    form.addEventListener("submit", () => {
-        // Repeatedly check if Formspree appended its native success flag
-        const checkSuccessInterval = setInterval(() => {
-            const successEl = document.querySelector('[data-fs-success]');
-            
-            // If Formspree turns the box visible, lock down local cache immediately
-            if (successEl && window.getComputedStyle(successEl).display !== 'none') {
-                localStorage.setItem("kayan_form_submitted", "true");
-                
-                // Keep the button static so they know it finished cleanly
-                if (submitBtn) {
-                    submitBtn.innerText = "Inquiry Sent";
-                    submitBtn.style.opacity = "0.6";
-                    submitBtn.disabled = true;
-                }
-                
-                clearInterval(checkSuccessInterval); // Kill the loop monitoring
-            }
-        }, 100);
+    // 2. Intercept submission using a native Promise-based handler
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault(); // Stop default browser redirect behavior
 
-        // Safety timeout to kill the loop if something drops offline
-        setTimeout(() => clearInterval(checkSuccessInterval), 5000);
+        // Update button state immediately to give visual feedback
+        submitBtn.innerText = "Sending Inquiry...";
+        submitBtn.disabled = true;
+        statusAlert.style.display = "none"; // Clear any lingering messages
+
+        const formData = new FormData(form);
+
+        try {
+            // Perform a direct backend POST query to Formspree
+            const response = await fetch("https://formspree.io/f/xeewyyob", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            // Handle successful HTTP 200 responses
+            if (response.ok) {
+                statusAlert.style.display = "block";
+                statusAlert.style.backgroundColor = "#E8F0E8"; // Emerald Green
+                statusAlert.style.color = "#1E4620";
+                statusAlert.style.borderColor = "#C3E6CB";
+                statusAlert.innerHTML = "Thank you! Your inquiry has been sent successfully. Our team will contact you shortly.";
+
+                // Save submission flag to browser memory cache
+                localStorage.setItem("kayan_form_submitted", "true");
+
+                // Lock fields without removing them from view
+                Array.from(form.elements).forEach(element => element.disabled = true);
+                submitBtn.innerText = "Inquiry Sent";
+                submitBtn.style.opacity = "0.6";
+            } 
+            // Catch specific validation or system errors (e.g., 400, 403, 429)
+            else {
+                const responseData = await response.json();
+                if (responseData.errors) {
+                    // Pull specific backend verification issues if present
+                    statusAlert.innerHTML = "Submission Error: " + responseData.errors.map(err => err.message).join(", ");
+                } else {
+                    statusAlert.innerHTML = "Oops! Formspree rejected this request. Code: " + response.status;
+                }
+                throw new Error("Server rejected request");
+            }
+
+        } catch (error) {
+            // Catch general offline network disconnect errors or throw parameters
+            statusAlert.style.display = "block";
+            statusAlert.style.backgroundColor = "#FDF2F2"; // Soft crimson red
+            statusAlert.style.color = "#9B1C1C";
+            statusAlert.style.borderColor = "#FDE8E8";
+            if (!statusAlert.innerHTML || statusAlert.innerHTML.includes("Thank you")) {
+                statusAlert.innerHTML = "Network connection issue. Please check your internet connectivity and try again.";
+            }
+            
+            // Re-enable button so they can try re-submitting
+            submitBtn.innerText = "Send Inquiry";
+            submitBtn.disabled = false;
+        }
     });
 
-    console.log("Formspree Production Monitoring Engine initialized successfully.");
+    console.log("Custom HTTP Form Lifecycle Engine initialized successfully.");
 }
 
 // --- Mobile Menu Interaction logic ---
