@@ -107,7 +107,11 @@
                         <label for="message">Requirement Details</label>
                         <textarea id="message" name="message" rows="6" required placeholder="Describe your product specifications..." data-fs-field></textarea>
                     </div>
-                    <button type="submit" data-fs-submit-btn class="btn" style="width: 100%;">Send Inquiry</button>
+                    <button type="submit" id="submit-btn" data-fs-submit-btn class="btn" style="width: 100%;">Send Inquiry</button>
+                    
+                    <div id="form-success-msg" style="display: none; margin-top: 20px; padding: 15px; background-color: #E8F0E8; color: #1E4620; border-radius: 8px; text-align: center; font-weight: 600; border: 1px solid #C3E6CB;">
+                        Thank you! Your inquiry has been sent successfully. Our team will contact you shortly.
+                    </div>
                 </form>
             </div>
         </div>

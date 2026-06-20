@@ -66,10 +66,58 @@ function renderLicenses() {
     `).join('');
 }
 
-// --- Form Formspree Actions ---
+// --- Form Formspree Actions & Browser Caching ---
 function initializeContactForm() {
-    // Formspree's CDN script handles submission automatically via index.html scripts
-    console.log("Formspree AJAX initialized successfully.");
+    const form = document.getElementById("contact-form");
+    const successMsg = document.getElementById("form-success-msg");
+    const submitBtn = document.getElementById("submit-btn");
+
+    if (!form) return;
+
+    // 1. Check browser cache on page load to prevent resubmission
+    if (localStorage.getItem("kayan_form_submitted") === "true") {
+        if (successMsg) {
+            successMsg.style.display = "block";
+            successMsg.innerHTML = "You have already submitted an inquiry. We are reviewing your details!";
+            successMsg.style.backgroundColor = "#FEF9E7"; // Warm cream accent color
+            successMsg.style.color = "#2C3E2B";
+            successMsg.style.borderColor = "#F4C430";
+        }
+        // Disable form inputs so they can't type or press enter again
+        Array.from(form.elements).forEach(element => element.disabled = true);
+        if (submitBtn) {
+            submitBtn.innerText = "Inquiry Already Submitted";
+            submitBtn.style.opacity = "0.6";
+            submitBtn.style.cursor = "not-allowed";
+        }
+        return;
+    }
+
+    // 2. Handle the live Formspree submission events
+    form.addEventListener("submit", () => {
+        // We use a small timeout to let Formspree complete the background AJAX call safely first
+        setTimeout(() => {
+            // Check if Formspree processed it successfully
+            const nativeSuccessEl = document.querySelector('[data-fs-success]');
+            
+            if (nativeSuccessEl && window.getComputedStyle(nativeSuccessEl).display !== 'none' || form.hasAttribute('data-fs-success')) {
+                // Display our custom green text message block
+                if (successMsg) successMsg.style.display = "block";
+                
+                // Save token to local storage cache to lock the browser permanently
+                localStorage.setItem("kayan_form_submitted", "true");
+                
+                // Disable button and form fields instantly
+                Array.from(form.elements).forEach(element => element.disabled = true);
+                if (submitBtn) {
+                    submitBtn.innerText = "Inquiry Sent";
+                    submitBtn.style.opacity = "0.6";
+                }
+            }
+        }, 800); // 800 milliseconds delay ensures AJAX roundtrip is finalized
+    });
+
+    console.log("Formspree AJAX & Submission Lock Engine initialized successfully.");
 }
 
 // --- Mobile Menu Interaction logic ---
