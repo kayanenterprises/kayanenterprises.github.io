@@ -11,13 +11,13 @@ const CATALOG_DATA = [
     {
         name: "Dehydrated Banana Chips",
         description: "100% natural, crisp, low-moisture healthy ingredients optimized using advanced structural dehydration systems.",
-        imagePath: "media/product-chips.jpg",
+        imagePath: "media/product-chips.png",
         altText: "Crisp Organic Banana Chips and Dehydrated Slices"
     },
     {
         name: "Premium Banana Biscuits",
         description: "Crispy, naturally sweetened biscuits baked with organic banana flour. Packed with micro-nutrients and optimized for long shelf-life export markets.",
-        imagePath: "media/product-biscuits.jpg",
+        imagePath: "media/product-biscuits.png",
         altText: "Premium Baked Organic Banana Biscuits Packaging"
     }
 ];
