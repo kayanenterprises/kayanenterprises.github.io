@@ -1,5 +1,5 @@
 // --- Configuration & Data Engine ---
-const FORMSPREE_ID = "your_formspree_id"; // <-- Drop your unique Formspree Endpoint ID code here
+const FORMSPREE_ID = "${FORMSPREEID}"; // <-- Drop your unique Formspree Endpoint ID code here
 
 const CATALOG_DATA = [
     {
