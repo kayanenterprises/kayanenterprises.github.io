@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayan Enterprises | Premium Banana Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Kayan Enterprises</a>
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#licenses">Licenses</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nature’s Finest Banana Products, Crafted for the World</h1>
+                <p>From premium organic powders to high-grade agricultural derivatives, Kayan Enterprises bridges sustainable local farming with global quality standards.</p>
+                <a href="#products" class="btn">Explore Catalogue</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">Our Catalogue</h2>
+            <p class="section-subtitle">Discover our premium range of sustainably processed, high-grade banana products tailored for global B2B markets.</p>
+            
+            <div class="product-grid" id="product-catalog"></div>
+        </div>
+    </section>
+
+    <section id="licenses">
+        <div class="container">
+            <h2 class="section-title">Compliance & Licenses</h2>
+            <p class="section-subtitle">We adhere strictly to global export parameters and statutory food-safety frameworks.</p>
+            
+            <div class="license-grid" id="license-list"></div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Kayan Enterprises</h2>
+                    <p>Rooted in India's richest banana-growing belts, Kayan Enterprises specializes in turning high-yield agro-produce into world-class consumer and industrial ingredients.</p>
+                    <p>Our operational model prioritizes transparent sourcing directly from farms, eco-friendly processing techniques, and robust quality checks to maintain long-term supply integrity for international partners.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <h4 id="stat-natural">100%</h4>
+                        <p>Natural Sourcing</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4 id="stat-export">Global</h4>
+                        <p>Export Standards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Interested in bulk orders, custom processing, or partnerships? Drop us a message.</p>
+            
+            <div class="contact-container">
+                <form id="contact-form" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name / Company</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe / ABC Foods Ltd.">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="_replyto" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Requirement Details</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Describe your product specifications, volume required, or business query..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Kayan Enterprises. All Rights Reserved. Crafted for global excellence.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

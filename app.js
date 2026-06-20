@@ -1,0 +1,75 @@
+// --- Configuration & Data Engine ---
+const FORMSPREE_ID = "your_formspree_id"; // <-- Drop your unique Formspree Endpoint ID code here
+
+const CATALOG_DATA = [
+    {
+        name: "Premium Green Banana Powder",
+        description: "Gluten-free, nutrient-rich, and perfect for functional food manufacturing, baking formulation, and premium wellness supplements.",
+        imagePath: "media/product-powder.jpg",
+        altText: "High Grade Organic Green Banana Powder"
+    },
+    {
+        name: "Dehydrated Banana Slices",
+        description: "100% natural, crisp, low-moisture healthy ingredients optimized using advanced structural dehydration systems.",
+        imagePath: "media/product-slices.jpg",
+        altText: "Crisp Organic Banana Chips and Dehydrated Slices"
+    },
+    {
+        name: "Organic Banana Puree",
+        description: "Aseptic, high-yield pureed fruits completely safe for global infant formula chains, premium beverages, and bakery fields.",
+        imagePath: "media/product-puree.jpg",
+        altText: "Pure Organic Sterile Banana Puree Packets"
+    }
+];
+
+const LICENSE_DATA = [
+    { title: "FSSAI Certified", desc: "Absolute food safety management benchmarks strictly audited." },
+    { title: "APEDA Registered", desc: "Authorized processing operations across global agricultural exports." },
+    { title: "IEC Registered", desc: "Verified Import Export Code status for smooth customs handling." },
+    { title: "ISO 22000 Aligned", desc: "Processing floors match strict worldwide hazard control guidelines." }
+];
+
+// --- Initialization Logic ---
+document.addEventListener("DOMContentLoaded", () => {
+    renderProducts();
+    renderLicenses();
+    initializeContactForm();
+});
+
+// --- UI Rendering Engines ---
+function renderProducts() {
+    const catalogContainer = document.getElementById("product-catalog");
+    if (!catalogContainer) return;
+
+    catalogContainer.innerHTML = CATALOG_DATA.map(product => `
+        <div class="product-card">
+            <div class="product-img-wrapper">
+                <img src="${product.imagePath}" alt="${product.altText}" onerror="this.src='https://placehold.co/600x400?text=${encodeURIComponent(product.name)}'">
+            </div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderLicenses() {
+    const licenseContainer = document.getElementById("license-list");
+    if (!licenseContainer) return;
+
+    licenseContainer.innerHTML = LICENSE_DATA.map(lic => `
+        <div class="license-card">
+            <h3>${lic.title}</h3>
+            <p>${lic.desc}</p>
+        </div>
+    `).join('');
+}
+
+// --- Form Formspree Actions ---
+function initializeContactForm() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    form.action = `https://formspree.io/f/${FORMSPREE_ID}`;
+}
