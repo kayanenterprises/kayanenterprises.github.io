@@ -76,12 +76,33 @@ header {
     margin: 0 auto;
 }
 
-.logo {
+/* .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary);
     text-decoration: none;
     letter-spacing: -0.5px;
+} */
+
+/* --- Updated Header Logo Layout --- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Smooth spacing between leaf icon and name */
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+/* Restricts the icon sizing perfectly for header proportions */
+.logo-icon {
+    height: 40px;  /* Matches header font line-height */
+    align-items: center;
+    width: auto;   /* Maintains natural leaf aspect ratio */
+    object-fit: contain;
+    border-radius: 5px; /* Optional subtle clipping edge smoothness */
 }
 
 .nav-links {
