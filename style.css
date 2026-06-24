@@ -98,7 +98,7 @@ header {
 
 /* Restricts the icon sizing perfectly for header proportions */
 .logo-icon {
-    height: 40px;  /* Matches header font line-height */
+    height: 40px;  /*Matches header font line-height*/
     align-items: center;
     width: auto;   /* Maintains natural leaf aspect ratio */
     object-fit: contain;
