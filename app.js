@@ -3,6 +3,10 @@
 // ============================================================
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xeewyyob";
 
+// WhatsApp click-to-chat. Enter the number with country code, digits only
+// (e.g. "919876543210"). Leave empty to keep the button hidden.
+const WHATSAPP_NUMBER = "";
+
 // Product photos: drop real photos at media/products/<id>.jpg and they replace
 // the placeholder illustration (<id>.svg) automatically.
 const CATALOG = [
@@ -27,7 +31,9 @@ const MARKETS = [
 const COUNTRY_CODES = ["US","BR","AR","VN","ID","JP","CN","BE","NL","FR","DE","ES","PT","IT","GB","MX","CO","PE","CL","EC","CR","GT","TH","MY","PH","SG","KR","AU","NZ","ZA","KE","TZ","UG","EG","MA","AE","SA","TR","BD","LK","NP","PK","CA"];
 
 let currentLang = "en";
-let formState = null;   // remembers last form message so it can be re-translated
+let formState = null;
+// remembers last form message so it can be re-translated
+const quoteSet = new Set();   // product ids added to the quote list
 
 // ---------- Translation helpers ----------
 function t(key, lang = currentLang) {
@@ -78,6 +84,8 @@ function applyLanguage(code, { persist = true } = {}) {
     renderProducts();
     renderMarkets();
     renderCountries();
+    renderQuoteList();
+    updateWhatsApp();
     refreshFormState();
 
     if (persist) { try { localStorage.setItem("kayan_lang", code); } catch (e) {} }
@@ -97,16 +105,62 @@ function renderProducts() {
             <div class="product-info">
                 <h3>${t("p." + p.key + ".n")}</h3>
                 <p>${t("p." + p.key + ".d")}</p>
-                <a class="product-link" href="#contact" data-interest="${p.interest}">${t("products.quote")}</a>
+                <div class="product-actions">
+                    <button type="button" class="add-quote ${quoteSet.has(p.id) ? "added" : ""}" data-id="${p.id}">${quoteSet.has(p.id) ? t("q.added") : t("q.add")}</button>
+                    <a class="product-link" href="#contact" data-interest="${p.interest}">${t("products.quote")}</a>
+                </div>
             </div>
         </article>
     `).join("");
+
+    el.querySelectorAll(".add-quote").forEach(b => b.addEventListener("click", () => {
+        quoteSet.has(b.dataset.id) ? quoteSet.delete(b.dataset.id) : quoteSet.add(b.dataset.id);
+        renderProducts();
+        renderQuoteList();
+    }));
 
     // Pre-select the matching interest in the form when "Request quote" is clicked
     el.querySelectorAll(".product-link").forEach(a => a.addEventListener("click", () => {
         const sel = document.getElementById("interest");
         if (sel) sel.value = a.dataset.interest;
     }));
+}
+
+// ---------- Quote list ----------
+function renderQuoteList() {
+    const box = document.getElementById("quote-list");
+    const hidden = document.getElementById("quote-products");
+    const pill = document.getElementById("quote-pill");
+    const items = CATALOG.filter(p => quoteSet.has(p.id));
+    if (box) {
+        box.innerHTML = items.length
+            ? items.map(p => `<span class="chip">${t("p." + p.key + ".n")}<button type="button" data-id="${p.id}" aria-label="${t("q.remove")}">×</button></span>`).join("")
+            : `<span class="empty">${t("q.empty")}</span>`;
+        box.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+            quoteSet.delete(b.dataset.id); renderProducts(); renderQuoteList();
+        }));
+    }
+    // Staff always receive English product names, whatever language the visitor used
+    if (hidden) hidden.value = items.map(p => TRANSLATIONS.en["p." + p.key + ".n"]).join("; ");
+    if (pill) {
+        pill.hidden = items.length === 0;
+        const c = document.getElementById("quote-count"); if (c) c.textContent = items.length;
+    }
+}
+
+// ---------- India clock & WhatsApp ----------
+function updateIndiaClock() {
+    const el = document.getElementById("india-clock");
+    if (!el) return;
+    el.textContent = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }).format(new Date());
+}
+
+function updateWhatsApp() {
+    const fab = document.getElementById("wa-fab");
+    if (!fab || !WHATSAPP_NUMBER) return;
+    fab.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(t("wa.msg"));
+    fab.setAttribute("aria-label", t("wa.label"));
+    fab.hidden = false;
 }
 
 function renderMarkets() {
@@ -267,5 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderLanguageMenu();
     initMobileMenu();
     initContactForm();
+    updateIndiaClock();
+    setInterval(updateIndiaClock, 30000);
     applyLanguage(detectLanguage(), { persist: false });
 });

@@ -195,3 +195,18 @@ footer { background: var(--primary-dark); color: rgba(255,255,255,.8); padding: 
     .lang-btn #lang-current-code { display: none; }
     .hero-actions .btn { width: 100%; }
 }
+
+/* --- Quote list, India clock, floating buttons --- */
+.product-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+.add-quote { background: transparent; border: 1.5px solid var(--primary); color: var(--primary); font: 700 .85rem 'Plus Jakarta Sans', sans-serif; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: var(--transition); }
+.add-quote:hover { background: var(--bg-alt); }
+.add-quote.added { background: var(--primary); color: #fff; }
+.india-time { display: flex; align-items: center; gap: 8px; margin: -28px 0 28px; color: var(--text-light); font-size: .92rem; }
+.quote-chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; align-items: center; padding: 8px 10px; border: 1.5px dashed var(--line); border-radius: 10px; background: var(--bg-light); }
+.quote-chips .empty { color: var(--text-light); font-size: .88rem; }
+.chip { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); border: 1px solid var(--accent); padding: 5px 6px 5px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600; color: var(--primary-dark); }
+.chip button { border: 0; background: var(--accent); color: #2A1B00; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; font-weight: 700; line-height: 1; }
+.quote-pill { position: fixed; left: 50%; transform: translateX(-50%); bottom: 20px; z-index: 90; background: var(--primary); color: #fff; padding: 12px 22px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: .92rem; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.quote-pill[hidden], .wa-fab[hidden] { display: none; }
+.wa-fab { position: fixed; right: 18px; bottom: 18px; z-index: 95; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0,0,0,.28); transition: var(--transition); }
+.wa-fab:hover { transform: scale(1.07); }

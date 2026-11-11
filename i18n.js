@@ -16,6 +16,15 @@ const LANGUAGES = [
 const TRANSLATIONS = {
 /* ---------------------------------------------------------- ENGLISH */
 en: {
+    "q.list": "Your quote list",
+    "q.pill": "Quote list",
+    "q.add": "Add to quote",
+    "q.added": "Added ✓",
+    "q.empty": "Tap “Add to quote” on any product above.",
+    "q.remove": "Remove",
+    "contact.time": "India time",
+    "wa.label": "Chat on WhatsApp",
+    "wa.msg": "Hello Kayan Enterprises, I am interested in your fruit fly traps and lures.",
     "meta.title": "Kayan Enterprises | Fruit Fly Pheromone Traps & Lures from India",
     "meta.desc": "Kayan Enterprises exports fruit fly pheromone traps and lures from India to growers, cooperatives and distributors worldwide.",
     "nav.products": "Products", "nav.how": "How it works", "nav.markets": "Markets", "nav.export": "Export", "nav.about": "About", "nav.contact": "Contact",
@@ -107,6 +116,15 @@ en: {
 
 /* -------------------------------------------------------- PORTUGUESE */
 pt: {
+    "q.list": "Sua lista de cotação",
+    "q.pill": "Lista de cotação",
+    "q.add": "Adicionar à cotação",
+    "q.added": "Adicionado ✓",
+    "q.empty": "Toque em “Adicionar à cotação” em qualquer produto acima.",
+    "q.remove": "Remover",
+    "contact.time": "Hora na Índia",
+    "wa.label": "Conversar no WhatsApp",
+    "wa.msg": "Olá Kayan Enterprises, tenho interesse nas suas armadilhas e atrativos para mosca-das-frutas.",
     "meta.title": "Kayan Enterprises | Armadilhas e Atrativos para Mosca-das-Frutas da Índia",
     "meta.desc": "A Kayan Enterprises exporta armadilhas e atrativos com feromônio para mosca-das-frutas da Índia para produtores, cooperativas e distribuidores.",
     "nav.products": "Produtos", "nav.how": "Como funciona", "nav.markets": "Mercados", "nav.export": "Exportação", "nav.about": "Sobre", "nav.contact": "Contato",
@@ -198,6 +216,15 @@ pt: {
 
 /* ----------------------------------------------------------- SPANISH */
 es: {
+    "q.list": "Su lista de cotización",
+    "q.pill": "Lista de cotización",
+    "q.add": "Añadir a la cotización",
+    "q.added": "Añadido ✓",
+    "q.empty": "Toque “Añadir a la cotización” en cualquier producto de arriba.",
+    "q.remove": "Quitar",
+    "contact.time": "Hora en la India",
+    "wa.label": "Chatear por WhatsApp",
+    "wa.msg": "Hola Kayan Enterprises, me interesan sus trampas y atrayentes para mosca de la fruta.",
     "meta.title": "Kayan Enterprises | Trampas y Atrayentes para Mosca de la Fruta desde la India",
     "meta.desc": "Kayan Enterprises exporta trampas y atrayentes con feromonas para mosca de la fruta desde la India a productores, cooperativas y distribuidores.",
     "nav.products": "Productos", "nav.how": "Cómo funciona", "nav.markets": "Mercados", "nav.export": "Exportación", "nav.about": "Nosotros", "nav.contact": "Contacto",
@@ -289,6 +316,15 @@ es: {
 
 /* -------------------------------------------------------- VIETNAMESE */
 vi: {
+    "q.list": "Danh sách báo giá của bạn",
+    "q.pill": "Danh sách báo giá",
+    "q.add": "Thêm vào báo giá",
+    "q.added": "Đã thêm ✓",
+    "q.empty": "Nhấn “Thêm vào báo giá” ở bất kỳ sản phẩm nào phía trên.",
+    "q.remove": "Xóa",
+    "contact.time": "Giờ Ấn Độ",
+    "wa.label": "Trò chuyện qua WhatsApp",
+    "wa.msg": "Xin chào Kayan Enterprises, tôi quan tâm đến bẫy và mồi ruồi đục quả của bạn.",
     "meta.title": "Kayan Enterprises | Bẫy và Mồi Pheromone Ruồi Đục Quả từ Ấn Độ",
     "meta.desc": "Kayan Enterprises xuất khẩu bẫy và mồi pheromone diệt ruồi đục quả từ Ấn Độ đến nhà vườn, hợp tác xã và nhà phân phối.",
     "nav.products": "Sản phẩm", "nav.how": "Cách hoạt động", "nav.markets": "Thị trường", "nav.export": "Xuất khẩu", "nav.about": "Giới thiệu", "nav.contact": "Liên hệ",
@@ -380,6 +416,15 @@ vi: {
 
 /* -------------------------------------------------------- INDONESIAN */
 id: {
+    "q.list": "Daftar penawaran Anda",
+    "q.pill": "Daftar penawaran",
+    "q.add": "Tambah ke penawaran",
+    "q.added": "Ditambahkan ✓",
+    "q.empty": "Ketuk “Tambah ke penawaran” pada produk mana pun di atas.",
+    "q.remove": "Hapus",
+    "contact.time": "Waktu India",
+    "wa.label": "Chat via WhatsApp",
+    "wa.msg": "Halo Kayan Enterprises, saya tertarik dengan perangkap dan atraktan lalat buah Anda.",
     "meta.title": "Kayan Enterprises | Perangkap & Atraktan Lalat Buah dari India",
     "meta.desc": "Kayan Enterprises mengekspor perangkap dan atraktan feromon lalat buah dari India untuk petani, koperasi, dan distributor.",
     "nav.products": "Produk", "nav.how": "Cara kerja", "nav.markets": "Pasar", "nav.export": "Ekspor", "nav.about": "Tentang", "nav.contact": "Kontak",
