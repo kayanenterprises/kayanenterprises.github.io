@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | Kayan Enterprises</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .error-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            padding: 20px;
-        }
-        .error-code { font-size: 6rem; color: var(--accent); font-weight: 700; line-height: 1; }
-    </style>
+    <title>Page not found | Kayan Enterprises</title>
+    <link rel="icon" type="image/jpeg" href="/media/icon.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="error-container">
         <div class="error-code">404</div>
-        <h1 style="color: var(--primary); margin: 20px 0;">Look like you're lost</h1>
-        <p style="color: var(--text-light); margin-bottom: 30px;">The banana product catalog page you are looking for doesn't exist or has been moved.</p>
-        <a href="/" class="btn">Back to Home</a>
+        <h1 id="t" style="color: var(--primary); margin: 20px 0;">Page not found</h1>
+        <p id="p" style="color: var(--text-light); margin-bottom: 30px;">The page you are looking for doesn't exist or has moved.</p>
+        <a href="/" class="btn" id="b">Back to home</a>
     </div>
+    <script src="/i18n.js"></script>
+    <script>
+        try {
+            const l = localStorage.getItem("kayan_lang");
+            if (l && TRANSLATIONS[l]) {
+                document.documentElement.lang = l;
+                t.textContent = TRANSLATIONS[l]["e404.title"];
+                p.textContent = TRANSLATIONS[l]["e404.p"];
+                b.textContent = TRANSLATIONS[l]["e404.btn"];
+            }
+        } catch (e) {}
+    </script>
 </body>
 </html>

@@ -3,123 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayan Enterprises | Premium Banana Products</title>
+    <title>Kayan Enterprises | Fruit Fly Pheromone Traps & Lures from India</title>
+    <meta name="description" content="Kayan Enterprises exports fruit fly pheromone traps and lures from India to growers, cooperatives and distributors worldwide.">
+    <meta name="theme-color" content="#1F4E2E">
 
     <link rel="icon" type="image/jpeg" href="media/icon.jpeg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="media/logo.jpeg" alt="Kayan Enterprises Logo" class="logo-icon">
+            <a href="#top" class="logo">
+                <img src="media/logo.jpeg" alt="Kayan Enterprises logo" class="logo-icon">
                 <span>Kayan Enterprises</span>
             </a>
-            
-            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-    
+
             <ul class="nav-links" id="nav-list">
-                <li><a href="#products">Products</a></li>
-                <li><a href="#licenses">Licenses</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#products" data-i18n="nav.products">Products</a></li>
+                <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+                <li><a href="#markets" data-i18n="nav.markets">Markets</a></li>
+                <li><a href="#export" data-i18n="nav.export">Export</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
+
+            <div class="nav-right">
+                <!-- Language switcher (top-right). Filled in by app.js from LANGUAGES in i18n.js -->
+                <div class="lang-switcher" id="lang-switcher">
+                    <button type="button" class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria="lang.label">
+                        <img id="lang-current-flag" src="media/flags/us.svg" alt="" width="24" height="16">
+                        <span id="lang-current-code">EN</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <ul class="lang-menu" id="lang-menu" role="listbox" hidden></ul>
+                </div>
+
+                <button class="menu-toggle" id="mobile-menu" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Nature’s Finest Banana Products, Crafted for the World</h1>
-                <p>From premium organic powders to high-grade agricultural derivatives, Kayan Enterprises bridges sustainable local farming with global quality standards.</p>
-                <a href="#products" class="btn">Explore Catalogue</a>
+    <main id="top">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="eyebrow" data-i18n="hero.eyebrow">Fruit fly control · Made in India</span>
+                    <h1 data-i18n="hero.h1">Fruit fly traps and pheromone lures, exported from India to the world's orchards</h1>
+                    <p data-i18n="hero.p">Kayan Enterprises supplies pheromone-based traps and lures to growers, cooperatives and agri-input distributors.</p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn" data-i18n="hero.btn1">Request a quote</a>
+                        <a href="#products" class="btn btn-ghost" data-i18n="hero.btn2">View products</a>
+                    </div>
+                    <p class="hero-crops" data-i18n="hero.crops">Mango · Citrus · Guava · Papaya · Melons &amp; cucurbits</p>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <img src="media/products/trap-b.jpg" alt="" id="hero-img" onerror="this.onerror=null;this.src='media/products/trap-b.svg'">
+                </div>
             </div>
-        </div>
-    </section>
+            <div class="container trust-row">
+                <div class="trust-item"><span class="dot"></span><span data-i18n="trust.1">Pheromone-based, targeted attraction</span></div>
+                <div class="trust-item"><span class="dot"></span><span data-i18n="trust.2">Bulk, private-label &amp; custom packing</span></div>
+                <div class="trust-item"><span class="dot"></span><span data-i18n="trust.3">Export documentation support</span></div>
+            </div>
+        </section>
 
-    <section id="products">
-        <div class="container">
-            <h2 class="section-title">Our Catalogue</h2>
-            <p class="section-subtitle">Discover our premium range of sustainably processed, high-grade banana products tailored for global B2B markets.</p>
-            
-            <div class="product-grid" id="product-catalog"></div>
-        </div>
-    </section>
+        <section id="products">
+            <div class="container">
+                <h2 class="section-title" data-i18n="products.title">Traps &amp; lures</h2>
+                <p class="section-subtitle" data-i18n="products.sub"></p>
+                <div class="product-grid" id="product-catalog"></div>
+            </div>
+        </section>
 
-    <section id="licenses">
-        <div class="container">
-            <h2 class="section-title">Compliance & Licenses</h2>
-            <p class="section-subtitle">We adhere strictly to global export parameters and statutory food-safety frameworks.</p>
-            
-            <div class="license-grid" id="license-list"></div>
-        </div>
-    </section>
+        <section id="how" class="alt">
+            <div class="container">
+                <h2 class="section-title" data-i18n="how.title">Three steps to healthier fruit</h2>
+                <p class="section-subtitle" data-i18n="how.sub"></p>
+                <div class="steps">
+                    <div class="step"><span class="step-num">1</span><h3 data-i18n="how.1.t">Attract</h3><p data-i18n="how.1.d"></p></div>
+                    <div class="step"><span class="step-num">2</span><h3 data-i18n="how.2.t">Trap</h3><p data-i18n="how.2.d"></p></div>
+                    <div class="step"><span class="step-num">3</span><h3 data-i18n="how.3.t">Monitor</h3><p data-i18n="how.3.d"></p></div>
+                </div>
+            </div>
+        </section>
 
-    <section id="about">
-        <div class="container">
-            <div class="about-content">
+        <section id="pests">
+            <div class="container">
+                <h2 class="section-title" data-i18n="pests.title">Target pests &amp; crops</h2>
+                <p class="section-subtitle" data-i18n="pests.sub"></p>
+                <div class="pest-grid">
+                    <div class="pest-card">
+                        <p class="latin">Bactrocera dorsalis</p>
+                        <h3 data-i18n="pests.1.n">Oriental fruit fly</h3>
+                        <p data-i18n="pests.1.c"></p>
+                    </div>
+                    <div class="pest-card">
+                        <p class="latin">Bactrocera cucurbitae</p>
+                        <h3 data-i18n="pests.2.n">Melon fly</h3>
+                        <p data-i18n="pests.2.c"></p>
+                    </div>
+                </div>
+                <p class="note" data-i18n="pests.note"></p>
+            </div>
+        </section>
+
+        <section id="markets" class="alt">
+            <div class="container">
+                <h2 class="section-title" data-i18n="markets.title">Serving growers worldwide</h2>
+                <p class="section-subtitle" data-i18n="markets.sub"></p>
+                <div class="market-grid" id="market-grid"></div>
+                <p class="note" data-i18n="markets.note"></p>
+            </div>
+        </section>
+
+        <section id="export">
+            <div class="container">
+                <h2 class="section-title" data-i18n="export.title">Built for export buyers</h2>
+                <p class="section-subtitle" data-i18n="export.sub"></p>
+                <div class="feature-grid">
+                    <div class="feature"><h3 data-i18n="export.1.t"></h3><p data-i18n="export.1.d"></p></div>
+                    <div class="feature"><h3 data-i18n="export.2.t"></h3><p data-i18n="export.2.d"></p></div>
+                    <div class="feature"><h3 data-i18n="export.3.t"></h3><p data-i18n="export.3.d"></p></div>
+                    <div class="feature"><h3 data-i18n="export.4.t"></h3><p data-i18n="export.4.d"></p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="alt">
+            <div class="container about-content">
                 <div class="about-text">
-                    <h2>About Kayan Enterprises</h2>
-                    <p>Rooted in India's richest banana-growing belts, Kayan Enterprises specializes in turning high-yield agro-produce into world-class consumer and industrial ingredients.</p>
-                    <p>Our operational model prioritizes transparent sourcing directly from farms, eco-friendly processing techniques, and robust quality checks to maintain long-term supply integrity for international partners.</p>
+                    <h2 data-i18n="about.title">About Kayan Enterprises</h2>
+                    <p data-i18n="about.p1"></p>
+                    <p data-i18n="about.p2"></p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat-box">
-                        <h4 id="stat-natural">100%</h4>
-                        <p>Natural Sourcing</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4 id="stat-export">Global</h4>
-                        <p>Export Standards</p>
-                    </div>
+                    <div class="stat-box"><h4>IN</h4><p data-i18n="about.s1">Made in India</p></div>
+                    <div class="stat-box"><h4>EXP</h4><p data-i18n="about.s2">Export-ready packing</p></div>
+                    <div class="stat-box"><h4>B2B</h4><p data-i18n="about.s3">Direct from exporter</p></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Interested in bulk orders, custom processing, or partnerships? Drop us a message.</p>
-            
-            <div class="contact-container">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Your Name / Company</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe / ABC Foods Ltd.">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Requirement Details</label>
-                        <textarea id="message" name="message" rows="6" required placeholder="Describe your product specifications..."></textarea>
-                    </div>
-                    
-                    <button type="submit" id="submit-btn" class="btn" style="width: 100%;">Send Inquiry</button>
-                    
-                    <div id="form-status-alert" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; border: 1px solid transparent;"></div>
-                </form>
+        <section id="docs">
+            <div class="container">
+                <h2 class="section-title" data-i18n="docs.title">Quality &amp; documentation</h2>
+                <p class="section-subtitle" data-i18n="docs.sub"></p>
+                <div class="license-grid">
+                    <div class="license-card"><h3 data-i18n="docs.1.t"></h3><p data-i18n="docs.1.d"></p></div>
+                    <div class="license-card"><h3 data-i18n="docs.2.t"></h3><p data-i18n="docs.2.d"></p></div>
+                    <div class="license-card"><h3 data-i18n="docs.3.t"></h3><p data-i18n="docs.3.d"></p></div>
+                    <div class="license-card"><h3 data-i18n="docs.4.t"></h3><p data-i18n="docs.4.d"></p></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="contact" class="alt">
+            <div class="container">
+                <h2 class="section-title" data-i18n="contact.title">Request a quote or sample</h2>
+                <p class="section-subtitle" data-i18n="contact.sub"></p>
+
+                <div class="contact-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-i18n="f.name">Your name / company</label>
+                            <input type="text" id="name" name="name" required data-i18n-ph="f.name.ph">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="f.email">Email address</label>
+                            <input type="email" id="email" name="email" required data-i18n-ph="f.email.ph">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="country" data-i18n="f.country">Country</label>
+                                <select id="country" name="country" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="interest" data-i18n="f.interest">Interested in</label>
+                                <select id="interest" name="interest">
+                                    <option value="Traps" data-i18n="f.int.traps">Traps</option>
+                                    <option value="Lures" data-i18n="f.int.lures">Lures</option>
+                                    <option value="Kits" data-i18n="f.int.kits">Trap + lure kits</option>
+                                    <option value="Other" data-i18n="f.int.other">Other / not sure</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="f.msg">Requirement details</label>
+                            <textarea id="message" name="message" rows="5" required data-i18n-ph="f.msg.ph"></textarea>
+                        </div>
+                        <input type="hidden" name="site_language" id="site-language" value="en">
+
+                        <button type="submit" id="submit-btn" class="btn" style="width:100%;" data-i18n="f.send">Send inquiry</button>
+                        <div id="form-status-alert" role="status" style="display:none;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Kayan Enterprises. All Rights Reserved. Crafted for global excellence.</p>
+        <div class="container footer-inner">
+            <span>&copy; 2026 Kayan Enterprises. <span data-i18n="footer.rights">All rights reserved.</span></span>
+            <span data-i18n="footer.tag">Fruit fly traps &amp; lures from India</span>
         </div>
     </footer>
 
+    <script src="i18n.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
